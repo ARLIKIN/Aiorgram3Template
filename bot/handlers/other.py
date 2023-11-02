@@ -1,12 +1,16 @@
-from aiogram import Dispatcher
+from aiogram import Router
+from aiogram.filters import Command
 from aiogram.types import Message
+from aiogram import F
+
+other_router = Router()
 
 
-async def echo(msg: Message):
-    # todo: remove echo example:3
-    await msg.answer(msg.text)
+@other_router.message(Command("start"))
+async def command_start_handler(message: Message) -> None:
+    await message.answer(f"Hello, <b>{message.from_user.full_name}!</b>")
 
 
-def register_other_handlers(dp: Dispatcher) -> None:
-    # todo: register all other handlers
-    dp.register_message_handler(echo, content_types=['text'])
+@other_router.message(F.text == 'Name')
+async def user_name(message:Message) -> None:
+    await message.answer(message.from_user.full_name)

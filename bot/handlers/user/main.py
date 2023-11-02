@@ -1,7 +1,10 @@
-from aiogram import Dispatcher
+from aiogram import Router
+from aiogram.filters import Command
+from aiogram.types import Message
+
+user_router = Router()
 
 
-def register_user_handlers(dp: Dispatcher):
-    # todo: register all user handlers
-    pass
-
+@user_router.message(Command("about"))
+async def command(message: Message) -> None:
+    await message.answer(f"Полное описание для, <b>{message.from_user.full_name}!</b>")

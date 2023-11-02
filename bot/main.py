@@ -1,20 +1,18 @@
-from aiogram.utils import executor
-from aiogram import Bot, Dispatcher
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
-
-from bot.filters import register_all_filters
 from bot.misc import TgKeys
-from bot.handlers import register_all_handlers
-from bot.database.models import register_models
+from bot.handlers.user import user_router
+from bot.handlers.admin import admin_router
+from bot.handlers.other import other_router
+from aiogram import Bot, Dispatcher
+from aiogram.enums import ParseMode
 
 
-async def __on_start_up(dp: Dispatcher) -> None:
-    register_all_filters(dp)
-    register_all_handlers(dp)
-    register_models()
-
-
-def start_bot():
-    bot = Bot(token=TgKeys.TOKEN, parse_mode='HTML')
-    dp = Dispatcher(bot, storage=MemoryStorage())
-    executor.start_polling(dp, skip_updates=True, on_startup=__on_start_up)
+async def start_bot():
+    dp = Dispatcher()
+    # todo Register all the routers from handlers package
+    dp.include_routers(
+        admin_router,
+        user_router,
+        other_router
+    )
+    bot = Bot(token=TgKeys.TOKEN, parse_mode=ParseMode.HTML)
+    await dp.start_polling(bot)
