@@ -7,4 +7,5 @@ user_router = Router()
 
 @user_router.message(Command("about"))
 async def command(message: Message) -> None:
-    await message.answer(f"Полное описание для, <b>{message.from_user.full_name}!</b>")
+    await message.answer(f"Полное описание для, "
+                         f"<b>{message.from_user.full_name}!</b>")

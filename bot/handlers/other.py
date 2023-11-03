@@ -12,5 +12,5 @@ async def command_start_handler(message: Message) -> None:
 
 
 @other_router.message(F.text == 'Name')
-async def user_name(message:Message) -> None:
+async def user_name(message: Message) -> None:
     await message.answer(message.from_user.full_name)
