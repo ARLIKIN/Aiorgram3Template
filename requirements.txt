@@ -1,1 +1,5 @@
-aiogram==3.1.1
+aiogram==3.4.1
+aiogram_dialog==2.1.0
+environs==11.0.0
+fluentogram==1.1.6
+PyYAML==6.0.1
