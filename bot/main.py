@@ -1,4 +1,5 @@
 from aiogram import Bot, Dispatcher
+from aiogram.client.default import DefaultBotProperties
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.fsm.strategy import FSMStrategy
 from aiogram.enums import ParseMode
@@ -20,5 +21,5 @@ async def start_bot():
         user_router,
         other_router
     )
-    bot = Bot(token=TgKeys.TOKEN, parse_mode=ParseMode.HTML)
+    bot = Bot(token=TgKeys.TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     await dp.start_polling(bot)
