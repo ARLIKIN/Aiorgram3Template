@@ -8,7 +8,7 @@ services:
 
   db_postgres:
     image: postgres:16.4
-    container_name: postgres_db_container_club
+    container_name: postgres_db_container
     env_file:
       - .env
     volumes:
@@ -16,7 +16,7 @@ services:
     restart: unless-stopped
 
   club_pgadmin:
-    container_name: pgadmin_container_club
+    container_name: pgadmin_container
     image: dpage/pgadmin4:8.6
     depends_on:
       - db_postgres
@@ -34,6 +34,10 @@ services:
       - db_postgres
     env_file:
       - .env
+    environment:
+      - TOKEN
+      - DEBUG
     volumes:
       - ./bot/locales:/app/bot/locales
+      - ./alembic:/app/alembic
     restart: unless-stopped

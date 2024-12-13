@@ -30,6 +30,7 @@ log = logging.getLogger(__name__)
 
 
 async def start_bot():
+    print(f'Token={Config.TOKEN}')
     bot = Bot(
         token=Config.TOKEN,
         default=DefaultBotProperties(parse_mode=ParseMode.HTML)

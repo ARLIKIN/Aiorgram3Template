@@ -6,4 +6,5 @@ COPY requirements.txt .
 RUN pip install --no-cache -r /app/requirements.txt
 COPY run.py .
 COPY bot /app/bot
+COPY alembic.ini .
 CMD ["python", "-m", "run"]
