@@ -1,0 +1,39 @@
+version: '3'
+
+volumes:
+  postgres_db_vol:
+  pgadmin-data:
+
+services:
+
+  db_postgres:
+    image: postgres:16.4
+    container_name: postgres_db_container_club
+    env_file:
+      - .env
+    volumes:
+      - postgres_db_vol:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  club_pgadmin:
+    container_name: pgadmin_container_club
+    image: dpage/pgadmin4:8.6
+    depends_on:
+      - db_postgres
+    env_file:
+      - .env
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    ports:
+      - "5051:80"
+    restart: unless-stopped
+
+  app:
+    build: ./
+    depends_on:
+      - db_postgres
+    env_file:
+      - .env
+    volumes:
+      - ./bot/locales:/app/bot/locales
+    restart: unless-stopped

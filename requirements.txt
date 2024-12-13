@@ -3,3 +3,7 @@ aiogram_dialog==2.2.0
 environs==11.2.1
 fluentogram==1.1.10
 PyYAML==6.0.2
+python-dotenv==1.0.1
+SQLAlchemy==2.0.23
+aiosqlite==0.19.0
+asyncpg==0.28.0

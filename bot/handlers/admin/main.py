@@ -1,7 +1,7 @@
 from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message
-from bot.filters.main import IsAdmin
+from bot.filters.is_admin import IsAdmin
 admin_router = Router()
 admin_router.message.filter(IsAdmin())
 

@@ -1,1 +1,1 @@
-from bot.service.env import TgKeys
+from bot.service.config import Config
