@@ -11,7 +11,7 @@ from aiogram_dialog.api.exceptions import UnknownIntent, UnknownState
 from fluentogram import TranslatorHub
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
-from bot.database.models.main import create_all_table
+from bot.database.engine import engine
 from bot.handlers import all_router
 from bot.handlers.errors.main import on_unknown_intent, on_unknown_state
 from bot.middlewares.i18n import TranslatorRunnerMiddleware
@@ -49,8 +49,7 @@ async def start_bot():
         ExceptionTypeFilter(UnknownState),
     )
 
-    async_engine = await create_all_table()
-    sessionmaker = async_sessionmaker(async_engine, expire_on_commit=False)
+    sessionmaker = async_sessionmaker(engine(), expire_on_commit=False)
     dp.update.outer_middleware(DbSessionMiddleware(sessionmaker))
     dp.message.outer_middleware(TrackAllUsersMiddleware())
 

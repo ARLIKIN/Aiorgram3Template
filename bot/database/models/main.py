@@ -28,10 +28,3 @@ class User(Base):
     username = Column(String, default='@None')
     fullname = Column(String)
     lang_tg = Column(String, nullable=True)
-
-
-async def create_all_table():
-    async_engine = engine()
-    async with async_engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
-    return async_engine
