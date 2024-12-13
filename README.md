@@ -10,6 +10,6 @@ using Aiogram Dialog and fluentogram localization
    - [User](bot/handlers/user/main.py)
 3. [**Database**]()
    - [setup engine](bot/database/main.py)
-4. [**Localization**](bot/misc/i18n.py)
-   - [settings](bot/misc/i18n.py)
+4. [**Localization**](bot/service/i18n.py)
+   - [settings](bot/service/i18n.py)
 5. Run [run.py](run.py)

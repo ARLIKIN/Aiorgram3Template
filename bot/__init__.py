@@ -1,1 +1,1 @@
-from bot.main import start_bot
+from bot.__main__ import start_bot

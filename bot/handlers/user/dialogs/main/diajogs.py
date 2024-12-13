@@ -2,8 +2,8 @@ from aiogram_dialog import Dialog, Window
 from aiogram_dialog.widgets.text import Format
 from aiogram_dialog.widgets.kbd import Button
 
-from bot.dialogs.user.main.getters import get_hello
-from bot.dialogs.user.main.handlers import button_click
+from bot.handlers.user.dialogs.main.getters import get_hello
+from bot.handlers.user.dialogs.main.handlers import button_click
 from bot.states.state_user import StartSG
 
 start_dialog = Dialog(
