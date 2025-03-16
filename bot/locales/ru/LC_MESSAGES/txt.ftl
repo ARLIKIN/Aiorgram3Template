@@ -1,7 +1,10 @@
 #USER TEXT
 hello-user = Привет, { $username }.
-button-button = Нажми на меня!
-button-pressed = Начинаем работать
+user-pressed = Начинаем работать
+
+
+#USER BUTTON
+user-button-hello = Привет
 
 
 #ADMIN TEXT

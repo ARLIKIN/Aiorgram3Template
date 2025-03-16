@@ -5,7 +5,7 @@ class TranslatorRunner:
     def get(self, path: str, **kwargs) -> str: ...
     
     hello: Hello
-    button: Button
+    user: User
     admin: Admin
 
 
@@ -14,12 +14,16 @@ class Hello:
     def user(*, username) -> Literal["""Привет, { $username }."""]: ...
 
 
-class Button:
-    @staticmethod
-    def button() -> Literal["""Нажми на меня!"""]: ...
+class User:
+    button: UserButton
 
     @staticmethod
     def pressed() -> Literal["""Начинаем работать"""]: ...
+
+
+class UserButton:
+    @staticmethod
+    def hello() -> Literal["""Привет"""]: ...
 
 
 class Admin:
