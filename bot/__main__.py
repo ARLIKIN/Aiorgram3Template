@@ -17,7 +17,7 @@ from bot.handlers.errors.main import on_unknown_intent, on_unknown_state
 from bot.middlewares.i18n import TranslatorRunnerMiddleware
 from bot.middlewares.session import DbSessionMiddleware
 from bot.middlewares.track_all_users import TrackAllUsersMiddleware
-from bot.service import Config
+from bot.config_data import Config
 from bot.service.i18n import create_translator_hub
 
 logging.basicConfig(
