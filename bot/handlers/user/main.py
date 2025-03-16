@@ -1,16 +1,23 @@
-from aiogram import Router
+from typing import TYPE_CHECKING
+
+from aiogram import Router, html
 from aiogram.filters import CommandStart
 from aiogram.types import Message
-from aiogram_dialog import DialogManager, StartMode
+from fluentogram import TranslatorRunner
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from bot.states.state_user import StartSG
+if TYPE_CHECKING:
+    from bot.locales.stub import TranslatorRunner
 
 user_router = Router()
 
 
 @user_router.message(CommandStart())
 async def process_start_command(
-        message: Message,
-        dialog_manager: DialogManager
+    message: Message,
+    session: AsyncSession,
+    i18n: TranslatorRunner
 ) -> None:
-    await dialog_manager.start(state=StartSG.start, mode=StartMode.RESET_STACK)
+    await message.answer(
+        i18n.hello.user(username=html.quote(message.from_user.username)),
+    )

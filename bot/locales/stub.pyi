@@ -6,6 +6,7 @@ class TranslatorRunner:
     
     hello: Hello
     button: Button
+    admin: Admin
 
 
 class Hello:
@@ -19,4 +20,15 @@ class Button:
 
     @staticmethod
     def pressed() -> Literal["""Начинаем работать"""]: ...
+
+
+class Admin:
+    mes: AdminMes
+
+
+class AdminMes:
+    @staticmethod
+    def hello(*, username) -> Literal["""Приветствую админа
+
+{ $username }"""]: ...
 
