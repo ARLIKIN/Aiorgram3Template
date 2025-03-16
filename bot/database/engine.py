@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from bot.service import Config
+from bot.config_data import Config
 
 if Config.DEBUG:
     ENGINE = f"sqlite+aiosqlite:///bot/database/{Config.POSTGRES_DB}.db"
