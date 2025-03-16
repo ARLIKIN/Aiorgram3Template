@@ -13,3 +13,13 @@
 3. [**Localization**](bot/service/i18n.py)
    - [settings](bot/service/i18n.py)
 4. Run [run.py](run.py)
+
+
+## Миграции
+
+1. Что бы создать выполните команду 
+```sh
+shalembic revision --autogenerate -m «name_migrate»
+```
+
+2. При запуске бота автоматически применяется последняя миграция
