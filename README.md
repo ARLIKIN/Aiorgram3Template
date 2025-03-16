@@ -1,6 +1,6 @@
 # Aiogram Template
 Это шаблон для telegram-ботов от angiogram 3.X 
-с использованием aiogram dialog и локализации fluentogram
+с использованием локализации fluentogram
 
 
 ## **How to use🤔**
